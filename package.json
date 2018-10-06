@@ -1,0 +1,29 @@
+{
+  "name": "offensivewords",
+  "version": "1.0.0",
+  "description": "Determine if strings contain offensive words",
+  "main": "offensiveterms.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leejsinclair/offensivewords.git"
+  },
+  "keywords": [
+    "offensive",
+    "swearing"
+  ],
+  "author": "Lee Sinclair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leejsinclair/offensivewords/issues"
+  },
+  "homepage": "https://github.com/leejsinclair/offensivewords#readme",
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
