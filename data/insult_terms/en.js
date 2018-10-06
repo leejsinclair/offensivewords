@@ -1,10 +1,12 @@
 const escapeStringRegexp = require('escape-string-regexp')
 
-let words = ["pitiful",
+let words = [
+    "pitiful",
     "lousy",
     "stinking",
     "disgust",
     "distusting",
+    "esad",
     "stupid",
     "ugly",
     "red light district",
@@ -12,11 +14,15 @@ let words = ["pitiful",
     "bbfbbm",
     "cinba",
     "diaf",
+    "gafc",
+    "gtfo",
+    "ffs",
     "hbic",
     "idgara",
     "nwal",
     "rci",
     "saia",
+    "stfu",
     "wthow"
 ];
 
