@@ -34,17 +34,36 @@ var drugsRe = convertWordsToRegExp(drugs);
 var religionRe = convertWordsToRegExp(religion);
 
 function unacceptable(str) {
-	var wordMatch = str.match(wordsRe);
-	var insultMatch = str.match(insultsRe);
-	var sextingMatch = str.match(sextingRe);
-	var drugsMatch = str.match(drugsRe);
-	var religionMatch = str.match(religionRe);
+	str = str.toLowerCase();
+	var wordMatch = str.match(wordsRe) || [];
+	var insultMatch = str.match(insultsRe) || [];
+	var sextingMatch = str.match(sextingRe) || [];
+	var drugsMatch = str.match(drugsRe) || [];
+	var religionMatch = str.match(religionRe) || [];
 
-	var matches = (wordMatch || []).concat((insultMatch || []), (sextingMatch || []), (drugsMatch || []), (religionMatch || []));
+	var matches = {
+		'offensive': wordMatch,
+		'insult': insultMatch,
+		'sexting': sextingMatch,
+		'drugs': drugsMatch,
+		'religion': religionMatch,
+		'dangerous': wordMatch.concat(insultMatch, sextingMatch),
+		'risky': (drugsMatch)
+	};
+	
+	
+	// var matches = (wordMatch || []).concat((insultMatch || []), (sextingMatch || []), (drugsMatch || []), (religionMatch || []));
 
-	let uniqMatches = matches.filter( onlyUnique )
+	matches.offensive = matches.offensive.filter( onlyUnique )
+	matches.insult = matches.insult.filter( onlyUnique )
+	matches.sexting = matches.sexting.filter( onlyUnique )
+	matches.drugs = matches.drugs.filter( onlyUnique )
+	matches.religion = matches.religion.filter( onlyUnique )
+	matches.dangerous = matches.dangerous.filter( onlyUnique )
+	matches.risky = matches.risky.filter( onlyUnique )
+
 	// Ensure lowercase
-	return uniqMatches.map( (match) => { return match.toLowerCase() });
+	return matches;
 }
 
 if (module) {
