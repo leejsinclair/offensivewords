@@ -1,8 +1,10 @@
 var words = require('./data/core_terms/en.js')
-var insults = require('./data/insult_terms/en.js');
-var religion = require('./data/religion_terms/en.js');
-var sexting = require('./data/sexting_terms/en.js');
-var drugs = require('./data/drug_terms/en.js');
+var possible = require('./data/possibly_offensive/en.js')
+var atrisk = require('./data/at_risk/en.js')
+var insults = require('./data/insult_terms/en.js')
+var religion = require('./data/religion_terms/en.js')
+var sexting = require('./data/sexting_terms/en.js')
+var drugs = require('./data/drug_terms/en.js')
 
 /**
  * Convert array of words into regular expression
@@ -28,6 +30,8 @@ function convertWordsToRegExp(wordsList) {
 }
 
 var wordsRe = convertWordsToRegExp(words);
+var possibleRe = convertWordsToRegExp(possible);
+var atriskRe = convertWordsToRegExp(atrisk);
 var insultsRe = convertWordsToRegExp(insults);
 var sextingRe = convertWordsToRegExp(sexting);
 var drugsRe = convertWordsToRegExp(drugs);
@@ -36,6 +40,8 @@ var religionRe = convertWordsToRegExp(religion);
 function unacceptable(str) {
 	str = str.toLowerCase();
 	var wordMatch = str.match(wordsRe) || [];
+	var possibleMatch = str.match(possibleRe) || [];
+	var atriskMatch = str.match(atriskRe) || [];
 	var insultMatch = str.match(insultsRe) || [];
 	var sextingMatch = str.match(sextingRe) || [];
 	var drugsMatch = str.match(drugsRe) || [];
@@ -43,6 +49,8 @@ function unacceptable(str) {
 
 	var matches = {
 		'offensive': wordMatch,
+		'potentially_offensive': possibleMatch,
+		'at_risk': atriskMatch,
 		'insult': insultMatch,
 		'sexting': sextingMatch,
 		'drugs': drugsMatch,
@@ -50,9 +58,6 @@ function unacceptable(str) {
 		'dangerous': wordMatch.concat(insultMatch, sextingMatch),
 		'risky': (drugsMatch)
 	};
-	
-	
-	// var matches = (wordMatch || []).concat((insultMatch || []), (sextingMatch || []), (drugsMatch || []), (religionMatch || []));
 
 	matches.offensive = matches.offensive.filter( onlyUnique )
 	matches.insult = matches.insult.filter( onlyUnique )

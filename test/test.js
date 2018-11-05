@@ -42,5 +42,23 @@ describe('offensiveLanguage', () => {
             let result = offensiveLanguage(testString);
             assert.equal(0, result.dangerous.length);
         })
+
+        it('At Risk : unmotivated', () => {
+            let testString = 'i feel completely unmotivated'
+            let result = offensiveLanguage(testString);
+            assert.equal(1, result.at_risk.length);
+        })
+
+        it('At Risk : with quotes', () => {
+            let testString = 'i\'m completely numb'
+            let result = offensiveLanguage(testString);
+            assert.equal(1, result.at_risk.length);
+        })
+
+        it('Possibly offensive : jerk', () => {
+            let testString = 'yo uare a jerk'
+            let result = offensiveLanguage(testString);
+            assert.equal(1, result.potentially_offensive.length);
+        })
     })
 })

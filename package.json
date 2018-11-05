@@ -1,6 +1,6 @@
 {
   "name": "offensivewords",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Determine if strings contain offensive words",
   "main": "offensiveterms.js",
   "scripts": {
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/leejsinclair/offensivewords#readme",
   "dependencies": {
-    "escape-string-regexp": "^1.0.5"
+    "escape-string-regexp": "^1.0.5",
+    "wink-nlp-utils": "^2.0.0"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
