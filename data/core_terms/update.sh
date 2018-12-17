@@ -13,6 +13,10 @@ cat en_uppercase en_custom > en_combined
 echo "Sort file"
 sort -u en_combined > en_sorted
 
+node remove-common-words.js > en_non_common
+
 rm en_uppercase
 rm en_combined
-mv en_sorted en
+rm en_sorted
+
+mv en_non_common en
