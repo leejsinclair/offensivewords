@@ -1,6 +1,6 @@
 {
   "name": "offensivewords",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Determine if strings contain offensive words",
   "main": "offensiveterms.js",
   "scripts": {
