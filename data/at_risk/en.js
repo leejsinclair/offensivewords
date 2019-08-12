@@ -1,5 +1,5 @@
 const escapeStringRegexp = require('escape-string-regexp')
-const nlp = require( 'wink-nlp-utils' )
+const nlp = require('wink-nlp-utils')
 const corpus = nlp.string.composeCorpus;
 
 let indicators = [
@@ -36,7 +36,7 @@ let indicators = [
     "[{me}|{you}] [died]",
     "[{me}|{you}] [die]",
     "[die] [{me}|{you}]",
-	"[would] [{you}|{me}] [miss] [{me}]",
+    "[would] [{you}|{me}] [miss] [{me}]",
     "good for nothing",
     "[am|{me}|{you}] [nothing]",
     "[{me}] [panicing|panicking]",
@@ -44,8 +44,8 @@ let indicators = [
     "end it all",
     "end it now",
     "[end] [{me}] [life]",
-	"[better off without] [{me}|{you}]",
-	"want to die",
+    "[better off without] [{me}|{you}]",
+    "want to die",
     "so lonely",
     "[after|when] [{me}] [gone]",
     "suicide",
@@ -69,9 +69,10 @@ let indicators = [
     "[discriminate|descriminate|discrimminate|discrimination|descrimination|discrimminasion] [against] [{me}]",
     "[{me}] [have|having] [low] [esteem|estem|self-esteem|self-estem|self esteem|self estem|selfesteem|selfestem]",
     "[{me}] [lost|no] [motivation|pleasure|desire]",
-    "[{me}] [feel] [[{time}]|] [numb|passionless|unmotivated|{emotion}|{worthless}]",
-    "[{me}] [feel|] [unmotivated|uninterested|{emotion}|{worthless}]] [{time}]",
-    "[{me}] [feel|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]"
+    "[{me}] [feel] [{time}|] [numb|passionless|unmotivated|{emotion}|{worthless}]",
+    "[{me}] [feel] [numb|passionless|unmotivated|{emotion}|{worthless}] [{time}|]",
+    "[{me}] [feel|feeling|] [unmotivated|uninterested|{emotion}|{worthless}]] [{time}]",
+    "[{me}] [feel|feeling|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]"
 ];
 
 let me = [
@@ -155,32 +156,33 @@ let emotion = [
     "numb"
 ].join('|');
 
-let readyForCorpi = indicators.map( (term) => {
-    return term.replace( /\{me\}/g, me )
-        .replace( /\{you\}/g, you )
-        .replace( '{time}', time )
-        .replace( '{worthless}', worthless )
-        .replace( '{emotion}', emotion );
+let readyForCorpi = indicators.map((term) => {
+    return term.replace(/\{me\}/g, me)
+        .replace(/\{you\}/g, you)
+        .replace('{time}', time)
+        .replace('{worthless}', worthless)
+        .replace('{emotion}', emotion);
 });
 
 let words = [];
 
-readyForCorpi.forEach( (item) => {
-    if( item.indexOf('[') >=0 ) {
-        words = words.concat( corpus( item ) );
+readyForCorpi.forEach((item) => {
+    if (item.indexOf('[') >= 0) {
+        words = words.concat(corpus(item));
     } else {
-        words.push( item );
+        words.push(item);
     }
 });
 
-words = words.map( (word) => {
-    return word.replace(/  /g,' ').replace(/  /g,' ').replace(/  /g,' ')
+words = words.map((word) => {
+    return word.replace(/  /g, ' ').replace(/  /g, ' ').replace(/  /g, ' ')
 });
 
 
 // Ensure words are regex safe
 let regexSafeWords = words.map(
     (word) => {
+        console.log(word);
         return escapeStringRegexp(word)
     }
 )
