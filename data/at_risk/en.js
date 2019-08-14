@@ -4,20 +4,20 @@ const corpus = nlp.string.composeCorpus;
 
 let indicators = [
     "[{time}] [abuse]",
-    "[feel|feeling|{time}] [abused]",
+    "[feel|felt|feeling|{time}] [abused]",
     "anguish",
-    "[feel|feeling] [anxious|ancious|anxcious|insecure]",
-    "[feel|feeling|{time}] [afraid]",
-    "[feel|{me}|{time}] [damaged|damage|dammage]",
-    "[feel|am|{me}|{you}] [depressed|depressed|deppressed]",
+    "[feel|felt|feeling] [anxious|ancious|anxcious|insecure]",
+    "[feel|felt|feeling|{time}] [afraid]",
+    "[feel|felt|{me}|{time}] [damaged|damage|dammage]",
+    "[feel|felt|am|{me}|{you}] [depressed|depressed|deppressed]",
     "[depressed|depressed|deppressed] [{me}]",
     "[{me}|{you}] [am] [desprate|desperate|desparate]",
-    "[feel|{time}] [desprate|desperate|desparate]",
-    "[feel|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [despare|dispare|despair|self-despair]",
+    "[feel|felt|{time}] [desprate|desperate|desparate]",
+    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [despare|dispare|despair|self-despair]",
     "[no one understands] [{me}|{you}]",
     "[leave] [{me}] [alone]",
-    "[feel|feeling|{time}] [alone|overwhelmed]",
-    "[feel|feeling|{time}] [abandonned|abandoned]",
+    "[feel|felt|feeling|{time}] [alone|overwhelmed]",
+    "[feel|felt|feeling|{time}] [abandonned|abandoned]",
     "[{me}|{time}] [abandonned|abandoned|overwhelmed]",
     "[abandonned|abandoned] [{me}|{time}]",
     "[abandon|adbandon|abondoning] [{me}|{time}]",
@@ -25,11 +25,11 @@ let indicators = [
     "[{worthless}|{emotion}] [{me}|{time}]",
     "[trouble|troubled|unhappiness|anger|angry|frustrated|frustrating|mad|fuming|fury|irritated|violence|irritation|irate|outrage|resentful|rage|temper|blow up|blow-up|blowup|prick|endure|fatigued|fatiged|fatigue|defeated|insecure|isolated|struggle|uncertain|uncomfortable|uncomfortible|unfulfilled|unfulfiled|unsettling|unsettled|fed up|fed-up|fedup|stressed|too hard|tedious|weary] [{time}]",
     "[{time}] [trouble|troubled|unhappiness|anger|angry|frustrated|frustrating|mad|fuming|fury|irritated|violence|irate|irritation|outrage|resentful|rage|temper|blow up|blow-up|blowup|prick|endure|fatigued|fatiged|fatigue|defeated|insecure|isolated|struggle|uncertain|uncomfortable|uncomfortible|unfulfilled|unfulfiled|unsettling|unsettled|fed up|fedup|fed-up|stressed|too hard|stupid|tedious|uninterested|uninspired|uninteresting|weary]",
-    "[feel|feeling] [{emotion}] [{time}]",
+    "[feel|felt|feeling] [{emotion}] [{time}]",
     "[dangerous|angry] [temper]",
     "[{emotion}] [of] [his|her] [temper]",
     "[{me}|{time}] [{emotion}]",
-    "[feel] [{worthless}]",
+    "[feel|felt] [{worthless}]",
     "[stab|kill|hurt|cut|harm|murder] [{me}|{you}]",
     "[{me}|you] [suffer]",
     "[inflict|cause|wish] [pain|painful]",
@@ -71,22 +71,24 @@ let indicators = [
     "[{me}] [lost|no] [motivation|pleasure|desire]",
     "[{me}] [feel] [{time}|] [numb|passionless|unmotivated|{emotion}|{worthless}]",
     "[{me}] [feel] [numb|passionless|unmotivated|{emotion}|{worthless}] [{time}|]",
-    "[{me}] [feel|feeling|] [unmotivated|uninterested|{emotion}|{worthless}]] [{time}]",
-    "[{me}] [feel|feeling|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]"
+    "[{me}] [feel|felt|feeling|] [unmotivated|uninterested|{emotion}|{worthless}]] [{time}]",
+    "[{me}] [feel|felt|feeling|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]"
 ];
 
 let me = [
     "i",
     "im",
     "i'm",
+    "i am",
     "me",
     "my",
-    "myself"
+    "myself",
 ].join('|');
 
 let you = [
     "you",
-    "you're"
+    "you're",
+    "you are",
 ].join('|');
 
 let time = [
@@ -182,7 +184,7 @@ words = words.map((word) => {
 // Ensure words are regex safe
 let regexSafeWords = words.map(
     (word) => {
-        console.log(word);
+        // console.log(word);
         return escapeStringRegexp(word)
     }
 )
