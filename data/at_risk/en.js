@@ -13,8 +13,8 @@ let indicators = [
     "[depressed|depressed|deppressed] [{me}]",
     "[{me}|{you}] [am] [desprate|desperate|desparate]",
     "[feel|felt|{time}] [desprate|desperate|desparate]",
-    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [despare|dispare|despair|self-despair]",
-    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}] [despare|dispare|despair|self-despair]",
+    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [{dispare}]",
+    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}] [{dispare}]",
     "[no one understands] [{me}|{you}]",
     "[leave] [{me}] [alone]",
     "[feel|felt|feeling|{time}] [alone|overwhelmed]",
@@ -120,6 +120,15 @@ let worthless = [
     "screwed"
 ].join('|');
 
+let dispare = [
+    "despare",
+    "dispare",
+    "despair",
+    "self-despare",
+    "self-dispare",
+    "self-despair",
+].join('|');
+
 let emotion = [
     "sad",
     "sadness",
@@ -164,7 +173,8 @@ let readyForCorpi = indicators.map((term) => {
         .replace(/\{you\}/g, you)
         .replace('{time}', time)
         .replace('{worthless}', worthless)
-        .replace('{emotion}', emotion);
+        .replace('{emotion}', emotion)
+        .replace('{dispare}', dispare);
 });
 
 let words = [];
