@@ -61,6 +61,14 @@ describe('offensiveLanguage', () => {
             assert.equal(1, result.at_risk.length);
         })
 
+        it('At risk feel overwhelmed', () => {
+            let testString = 'i will most likely feel overwhelmed and exhausted again'
+            let result = offensiveLanguage(testString);
+            assert.equal(1, result.at_risk.length);
+        })
+
+        // i will most likely feel overwhelmed and exhausted again
+
         it('Possibly offensive : jerk', () => {
             let testString = 'yo uare a jerk'
             let result = offensiveLanguage(testString);

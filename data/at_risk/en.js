@@ -14,6 +14,7 @@ let indicators = [
     "[{me}|{you}] [am] [desprate|desperate|desparate]",
     "[feel|felt|{time}] [desprate|desperate|desparate]",
     "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [despare|dispare|despair|self-despair]",
+    "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}] [despare|dispare|despair|self-despair]",
     "[no one understands] [{me}|{you}]",
     "[leave] [{me}] [alone]",
     "[feel|felt|feeling|{time}] [alone|overwhelmed]",
