@@ -6,7 +6,25 @@ let indicators = [
     "[{time}] [abuse]",
     "[feel|felt|feeling|{time}] [abused]",
     "anguish",
+    "[{me}] [just] [tired|stressed]",
+    "[{me}] [just] [want|need] [to|to be] [done|finished|sleep|alone|disappear|disapear]",
+    "[{me}] [cant|can't] [keep] [doing] [this|it]",
+    "[{me}] [cant|can't] [imagine|keep] [living]",
+    "[{me}] [cant|can't] [recovery] [from this|this time|every|ever]",
+    "[{me}] [cant|can't|can never] [recover] [from this|this time|every|ever]",
+    "[{me}] [never] [been|been that] [happy|satisfied]",
+    "[{me}] [must have peace|be at peace]",
+    "[anything] [happens] [to] [{me}]",
+    "[hang|shoot|stab] [{me}]",
+    "[{me}|{you}] [trash|chewbacca|chewbaka]",
+    "[{me}|{you}] [too|] [ugly|stupid|idiot]",
+    "[live] [at|] [rock bottom|rockbottom]",
+    "[describes|picture|pictures|illustrates] [{me}|{you}] [sex life|sexlife]",
+    "[insecure|sad], [just|] [like] [{me}|{you}]",
+    "[{me}] [having] [a|] [hard|difficult] [time|moment]",
+    "[happier|better] [without] [{me}|{you}]",
     "[feel|felt|feeling] [anxious|ancious|anxcious|insecure]",
+    "[feel|felt|feeling] [guilty|ashamed|cursed|shame]",
     "[feel|felt|feeling|{time}] [afraid]",
     "[feel|felt|{me}|{time}] [damaged|damage|dammage]",
     "[feel|felt|am|{me}|{you}] [depressed|depressed|deppressed]",
@@ -15,7 +33,12 @@ let indicators = [
     "[feel|felt|{time}] [desprate|desperate|desparate]",
     "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}], [{dispare}]",
     "[feel|felt|feeling|i|growing|deep|utter|wave of|{me}|sometimes|in|{time}] [{dispare}]",
-    "[no one understands] [{me}|{you}]",
+    "[no one|noone|nobody] [understands|likes|loves] [{me}|{you}]",
+    "[no one|noone|nobody] [cares]",
+    "[{me}] [dont|don't] [care]",
+    "[every one|everyone] [hates|despises|dispises|kill|curse] [{me}|{you}]",
+    "[whole|entire] [world|country|town|city|] [hates|despises|dispises|kill|curse|curses] [{me}|{you}]",
+    "[humiliate|homiliate|humliate|humil8|mortify] [{me}|{you}]",
     "[leave] [{me}] [alone]",
     "[feel|felt|feeling|{time}] [alone|overwhelmed]",
     "[feel|felt|feeling|{time}] [abandonned|abandoned]",
@@ -59,6 +82,7 @@ let indicators = [
     "[it's|its] [hard|difficult] [to] [cope]",
     "[is] [joyless]",
     "[joyless|{worthless}] [life]",
+    "[mental] [breakdown]",
     "[self-harm|selfharm|self harm]",
     "[i] [need] [help]",
     "[{me}] [the|a] [victim]",
@@ -73,7 +97,13 @@ let indicators = [
     "[{me}] [feel] [{time}|] [numb|passionless|unmotivated|{emotion}|{worthless}]",
     "[{me}] [feel] [numb|passionless|unmotivated|{emotion}|{worthless}] [{time}|]",
     "[{me}] [feel|felt|feeling|] [unmotivated|uninterested|{emotion}|{worthless}]] [{time}]",
-    "[{me}] [feel|felt|feeling|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]"
+    "[{me}] [feel|felt|feeling|] [{time}|] [unmotivated|uninterested|{emotion}|{worthless}]]",
+    "[heaven] [be] [like]",
+    "[take] [{me}|{you}] [own|] [life]",
+    "[when] [{me}|{you}] [are] [dead]",
+    "[lived] [long] [enough]",
+    "[limp] [banana]",
+    "[jerk off]",
 ];
 
 let me = [
@@ -81,6 +111,11 @@ let me = [
     "im",
     "i'm",
     "i am",
+    "i've",
+    "ive",
+    "i have",
+    "i'll",
+    "i will",
     "me",
     "my",
     "myself",
@@ -190,6 +225,8 @@ readyForCorpi.forEach((item) => {
 words = words.map((word) => {
     return word.replace(/  /g, ' ').replace(/  /g, ' ').replace(/  /g, ' ')
 });
+
+console.log(words.join('\n'));
 
 
 // Ensure words are regex safe
