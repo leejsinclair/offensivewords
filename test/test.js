@@ -74,5 +74,35 @@ describe('offensiveLanguage', () => {
             let result = offensiveLanguage(testString);
             assert.equal(1, result.potentially_offensive.length);
         })
+
+        it('should return empty lists for an empty string', () => {
+            let result = offensiveLanguage('');
+            Object.keys(result).forEach(key => assert.deepEqual(result[key], []));
+        })
+
+        it('should detect insult terms', () => {
+            let result = offensiveLanguage('what a stinking lousy day');
+            assert.deepEqual(result.insult, ['stinking', 'lousy']);
+            assert.deepEqual(result.dangerous, ['stinking', 'lousy']);
+        })
+
+        it('should detect sexting terms', () => {
+            let result = offensiveLanguage('xxx');
+            assert.deepEqual(result.sexting, ['xxx']);
+            assert.deepEqual(result.dangerous, ['xxx']);
+        })
+
+        it('should detect drug terms as risky', () => {
+            let result = offensiveLanguage('he is stoned');
+            assert.deepEqual(result.drugs, ['stoned']);
+            assert.deepEqual(result.risky, ['stoned']);
+            assert.equal(0, result.dangerous.length);
+        })
+
+        it('should deduplicate dangerous matches across repeated words', () => {
+            let result = offensiveLanguage('Bastard bastard');
+            assert.deepEqual(result.offensive, ['bastard']);
+            assert.deepEqual(result.dangerous, ['bastard']);
+        })
     })
 })

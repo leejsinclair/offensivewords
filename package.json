@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/leejsinclair/offensivewords#readme",
   "dependencies": {
-    "escape-string-regexp": "^1.0.5",
-    "wink-nlp-utils": "^2.0.0"
+    "escape-string-regexp": "^4.0.0",
+    "wink-nlp-utils": "^2.1.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "mocha": "^12.0.3"
   }
 }
