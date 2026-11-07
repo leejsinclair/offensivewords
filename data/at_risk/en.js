@@ -104,6 +104,7 @@ let indicators = [
     "[lived] [long] [enough]",
     "[limp] [banana]",
     "[jerk off]",
+    "[goodbye] [cruel|horrid|horrible|{worthless}|{emotion}] [world]",
 ];
 
 let me = [
